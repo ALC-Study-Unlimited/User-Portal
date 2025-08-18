@@ -342,5 +342,87 @@
       <p style="margin: 0; opacity: 0.8;">© 2024 ALC Study Unlimited. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- JavaScript -->
+  <script src="js/article-manager.js"></script>
+  <script>
+    // ページ読み込み時に記事を動的に生成
+    document.addEventListener('DOMContentLoaded', () => {
+      loadArticles();
+      
+      // ストレージの変更を監視（他のタブでの変更を検知）
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'alcStudyArticles') {
+          loadArticles();
+        }
+      });
+      
+      // カスタムイベントを監視（同じタブ内での変更を検知）
+      window.addEventListener('articlesUpdated', () => {
+        loadArticles();
+      });
+    });
+
+    function loadArticles() {
+      const articles = ArticleManager.getArticles();
+      
+      // 最新記事（featured）を取得
+      const featuredArticle = articles.find(a => a.isFeatured) || articles[0];
+      
+      // 過去記事を取得
+      const pastArticles = articles.filter(a => !a.isFeatured).slice(0, 4);
+      
+      // 最新記事セクションを更新
+      updateFeaturedArticle(featuredArticle);
+      
+      // 過去記事セクションを更新
+      updatePastArticles(pastArticles);
+    }
+
+    function updateFeaturedArticle(article) {
+      const featuredSection = document.querySelector('.featured-article');
+      if (featuredSection && article) {
+        featuredSection.innerHTML = `
+          <div class="featured-content">
+            <div class="featured-image" style="background-image: url('${escapeHtml(article.imageUrl)}');"></div>
+            <div class="featured-text">
+              <span class="featured-badge">NEW</span>
+              <h3 class="featured-title">${escapeHtml(article.title)}</h3>
+              <p class="featured-description">
+                ${escapeHtml(article.description)}
+              </p>
+              <a href="${escapeHtml(article.url)}" target="_blank" class="featured-link">
+                記事を読む
+              </a>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function updatePastArticles(articles) {
+      const articlesGrid = document.querySelector('.articles-grid');
+      if (articlesGrid && articles.length > 0) {
+        articlesGrid.innerHTML = articles.map(article => `
+          <div class="article-card">
+            <div class="article-image" style="background-image: url('${escapeHtml(article.imageUrl)}');"></div>
+            <div class="article-content">
+              <p class="article-date">${escapeHtml(article.date)}</p>
+              <h3 class="article-title">${escapeHtml(article.title)}</h3>
+              <a href="${escapeHtml(article.url)}" target="_blank" class="article-link">
+                記事を読む
+              </a>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
 </body>
 </html>
