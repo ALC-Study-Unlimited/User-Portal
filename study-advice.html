@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html data-wf-page="68928fc4cd452216546e73fa" data-wf-site="68928fc4cd452216546e73f1">
+<head>
+  <meta charset="utf-8">
+  <title>学習アドバイス - ALC Study Unlimited</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/alc-study-unlimited.webflow.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Epilogue:regular"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  
+  <style>
+    body {
+      font-family: 'Epilogue', sans-serif;
+      background-color: #f7f8fa;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background-color: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .header-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .header-subtitle {
+      font-size: 1.125rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .featured-section {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #2563eb;
+      display: inline-block;
+    }
+
+    .featured-article {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 40px;
+    }
+
+    .featured-article:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .featured-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .featured-image {
+      flex: 0 0 400px;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+    }
+
+    .featured-text {
+      flex: 1;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      background: #ef4444;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .featured-title {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .featured-description {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .featured-link {
+      display: inline-block;
+      color: #2563eb;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .featured-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .article-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .article-image {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .article-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-date {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      margin-bottom: 8px;
+    }
+
+    .article-title {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .article-link {
+      color: #2563eb;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.3s ease;
+    }
+
+    .article-link:hover {
+      gap: 8px;
+      text-decoration: underline;
+    }
+
+    .article-link::after {
+      content: '→';
+    }
+
+    @media (max-width: 768px) {
+      .featured-content {
+        flex-direction: column;
+      }
+
+      .featured-image {
+        flex: none;
+        width: 100%;
+        height: 200px;
+      }
+
+      .header-title {
+        font-size: 2rem;
+      }
+
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="content-container">
+      <h1 class="header-title">学習アドバイス</h1>
+      <p class="header-subtitle">
+        英語学習に役立つ最新の記事とアドバイスをお届けします。<br>
+        日々の学習に活かせる実践的なヒントを見つけてください。
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-container">
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">← ホームに戻る</a>
+
+    <!-- Featured Article Section -->
+    <div class="featured-section">
+      <h2 class="section-title">最新の学習アドバイス</h2>
+      
+      <div class="featured-article">
+        <div class="featured-content">
+          <div class="featured-image" style="background-image: url('https://image-ej.alc.co.jp/images/GKEPd2WZF7WhBSPb1QSCw2.webp');"></div>
+          <div class="featured-text">
+            <span class="featured-badge">NEW</span>
+            <h3 class="featured-title">「やらかす」って英語でどう言う？5シーン別に使い分けよう！</h3>
+            <p class="featured-description">
+              「やってしまった…！」――そんな失敗やミスをしてしまったとき、英語ではどう表現する？仕事でも日常でも、「やらかした！」という瞬間にぴったりなフレーズがあります。悔しさや後悔をそのまま伝えられる"やらかす"のこなれ英語を5つ紹介！
+            </p>
+            <a href="https://ej.alc.co.jp/tag/konare_eigo/sns-insta-droptheball" target="_blank" class="featured-link">
+              記事を読む
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Past Articles Section -->
+    <div class="featured-section">
+      <h2 class="section-title">過去の学習アドバイス</h2>
+      
+      <div class="articles-grid">
+        <!-- Article 1 -->
+        <div class="article-card">
+          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/WSuPNP4Ajgwl6IpxjlAl8K7v.jpeg');"></div>
+          <div class="article-content">
+            <p class="article-date">2017年5月17日</p>
+            <h3 class="article-title">not much of（あまり～ではない、大した～ではない）を使った表現15</h3>
+            <a href="https://ej.alc.co.jp/tag/STUDY/20170517-keinan-10" target="_blank" class="article-link">
+              記事を読む
+            </a>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="article-card">
+          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/Qo28XeeteSjU4bEgf.webp');"></div>
+          <div class="article-content">
+            <p class="article-date">学習ヒント</p>
+            <h3 class="article-title">「絶好調」って英語でどう言う？5シーン別に使い分けよう！</h3>
+            <a href="https://ej.alc.co.jp/tag/konare_eigo/sns-insta-peachy" target="_blank" class="article-link">
+              記事を読む
+            </a>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="article-card">
+          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/xOYdNoRhM1bD52co6kvP4nQD.jpeg');"></div>
+          <div class="article-content">
+            <p class="article-date">2019年2月6日</p>
+            <h3 class="article-title">「以前と比べて2倍に増えた」って英語2語でどう言う？【省エネ英単語】</h3>
+            <a href="https://ej.alc.co.jp/tag/STUDY/20190206-shoene-endakazuko-3" target="_blank" class="article-link">
+              記事を読む
+            </a>
+          </div>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="article-card">
+          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/odVvfVBBmZ689SJHZ8P.webp');"></div>
+          <div class="article-content">
+            <p class="article-date">学習ヒント</p>
+            <h3 class="article-title">「知ったかぶり」って英語でどう言う？5シーン別に使い分けよう！</h3>
+            <a href="https://ej.alc.co.jp/tag/konare_eigo/sns-insta-fakeit" target="_blank" class="article-link">
+              記事を読む
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background-color: #1f2937; color: white; padding: 40px 0; margin-top: 80px; text-align: center;">
+    <div class="content-container">
+      <p style="margin: 0; opacity: 0.8;">© 2024 ALC Study Unlimited. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
