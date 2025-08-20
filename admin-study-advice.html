@@ -369,7 +369,7 @@
 
       <!-- 記事更新フォーム（最新記事1つ + 過去記事4つ = 合計5記事） -->
       <section>
-        <h2 class="section-title">記事URLの更新（最新1記事 + 過去4記事）</h2>
+        <h2 class="section-title">記事URLの更新（最新1記事 + 過去3記事）</h2>
         <form id="articleForm" class="article-form">
           <!-- 最新記事（記事1） -->
           <div class="form-group" style="background: #fef3c7; border-color: #fbbf24;">
@@ -478,31 +478,6 @@
               </div>
             </div>
           </div>
-
-          <div class="form-group">
-            <label class="form-label">📝 過去記事 4</label>
-            <div class="input-group">
-              <input type="url" 
-                     id="article5" 
-                     class="form-input" 
-                     placeholder="https://ej.alc.co.jp/..." 
-                     required>
-            </div>
-            <div class="form-row" style="margin-top: 15px;">
-              <div class="input-group">
-                <input type="text" 
-                       id="title5" 
-                       class="form-input" 
-                       placeholder="記事タイトル（任意）">
-              </div>
-              <div class="input-group">
-                <input type="url" 
-                       id="image5" 
-                       class="form-input" 
-                       placeholder="画像URL（任意）">
-              </div>
-            </div>
-          </div>
         </form>
       </section>
 
@@ -577,8 +552,8 @@
     async function updateArticles() {
       const updates = [];
       
-      // フォームから入力値を取得（最新1記事 + 過去4記事 = 合計5記事）
-      for (let i = 1; i <= 5; i++) {
+      // フォームから入力値を取得（最新1記事 + 過去3記事 = 合計4記事）
+      for (let i = 1; i <= 4; i++) {
         const urlInput = document.getElementById(`article${i}`);
         const titleInput = document.getElementById(`title${i}`);
         const imageInput = document.getElementById(`image${i}`);

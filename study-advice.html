@@ -282,9 +282,9 @@
       </div>
     </div>
 
-    <!-- Past Articles Section (4記事表示) -->
+    <!-- Past Articles Section (3記事表示) -->
     <div class="featured-section">
-      <h2 class="section-title">過去の学習アドバイス（4記事）</h2>
+      <h2 class="section-title">過去の学習アドバイス（3記事）</h2>
       
       <div class="articles-grid">
         <!-- Article 1 -->
@@ -318,18 +318,6 @@
             <p class="article-date">2019年2月6日</p>
             <h3 class="article-title">「以前と比べて2倍に増えた」って英語2語でどう言う？【省エネ英単語】</h3>
             <a href="https://ej.alc.co.jp/tag/STUDY/20190206-shoene-endakazuko-3" target="_blank" class="article-link">
-              記事を読む
-            </a>
-          </div>
-        </div>
-
-        <!-- Article 4 -->
-        <div class="article-card">
-          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/odVvfVBBmZ689SJHZ8P.webp');"></div>
-          <div class="article-content">
-            <p class="article-date">学習ヒント</p>
-            <h3 class="article-title">「知ったかぶり」って英語でどう言う？5シーン別に使い分けよう！</h3>
-            <a href="https://ej.alc.co.jp/tag/konare_eigo/sns-insta-fakeit" target="_blank" class="article-link">
               記事を読む
             </a>
           </div>
@@ -371,8 +359,8 @@
       // 最新記事（featured）を取得 - 1記事
       const featuredArticle = articles.find(a => a.isFeatured) || articles[0];
       
-      // 過去記事を取得 - 4記事表示
-      const pastArticles = articles.filter(a => !a.isFeatured).slice(0, 4);
+      // 過去記事を取得 - 3記事表示
+      const pastArticles = articles.filter(a => !a.isFeatured).slice(0, 3);
       
       // 最新記事セクションを更新
       updateFeaturedArticle(featuredArticle);

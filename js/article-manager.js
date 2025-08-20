@@ -3,7 +3,7 @@
 const ArticleManager = (() => {
   const STORAGE_KEY = 'alcStudyArticles';
   
-  // デフォルトの記事データ
+  // デフォルトの記事データ（最新1記事 + 過去3記事 = 合計4記事）
   const defaultArticles = [
     {
       id: 1,
@@ -39,15 +39,6 @@ const ArticleManager = (() => {
       description: '言いたいことを日本語から英語にすると、冗長な英文になってしまう――そんな悩みはありませんか？',
       imageUrl: 'https://image-ej.alc.co.jp/images/xOYdNoRhM1bD52co6kvP4nQD.jpeg',
       date: '2019年2月6日',
-      isFeatured: false
-    },
-    {
-      id: 5,
-      url: 'https://ej.alc.co.jp/tag/konare_eigo/sns-insta-fakeit',
-      title: '「知ったかぶり」って英語でどう言う？5シーン別に使い分けよう！',
-      description: '「実はよく分かってないけど、分かったふりをする」そんな"知ったかぶり"を英語でどう表現する？',
-      imageUrl: 'https://image-ej.alc.co.jp/images/odVvfVBBmZ689SJHZ8P.webp',
-      date: '学習ヒント',
       isFeatured: false
     }
   ];
