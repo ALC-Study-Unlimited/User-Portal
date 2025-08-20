@@ -282,9 +282,9 @@
       </div>
     </div>
 
-    <!-- Past Articles Section (最大4記事表示) -->
+    <!-- Past Articles Section (4記事表示) -->
     <div class="featured-section">
-      <h2 class="section-title">過去の学習アドバイス</h2>
+      <h2 class="section-title">過去の学習アドバイス（4記事）</h2>
       
       <div class="articles-grid">
         <!-- Article 1 -->
@@ -368,10 +368,10 @@
     function loadArticles() {
       const articles = ArticleManager.getArticles();
       
-      // 最新記事（featured）を取得
+      // 最新記事（featured）を取得 - 1記事
       const featuredArticle = articles.find(a => a.isFeatured) || articles[0];
       
-      // 過去記事を取得（最大4つ）
+      // 過去記事を取得 - 4記事表示
       const pastArticles = articles.filter(a => !a.isFeatured).slice(0, 4);
       
       // 最新記事セクションを更新

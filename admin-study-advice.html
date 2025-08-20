@@ -369,7 +369,7 @@
 
       <!-- 記事更新フォーム（最新記事1つ + 過去記事4つ = 合計5記事） -->
       <section>
-        <h2 class="section-title">記事URLの更新（最大5記事）</h2>
+        <h2 class="section-title">記事URLの更新（最新1記事 + 過去4記事）</h2>
         <form id="articleForm" class="article-form">
           <!-- 最新記事（記事1） -->
           <div class="form-group" style="background: #fef3c7; border-color: #fbbf24;">
@@ -577,7 +577,7 @@
     async function updateArticles() {
       const updates = [];
       
-      // フォームから入力値を取得
+      // フォームから入力値を取得（最新1記事 + 過去4記事 = 合計5記事）
       for (let i = 1; i <= 5; i++) {
         const urlInput = document.getElementById(`article${i}`);
         const titleInput = document.getElementById(`title${i}`);
