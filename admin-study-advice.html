@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-  <script type="text/javascript">WebFont.load({  google: {    families: ["Epilogue:regular,500,600,700"]  }});</script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Epilogue:regular,500,600,700,800"]  }});</script>
   
   <style>
     * {
@@ -19,7 +19,7 @@
 
     body {
       font-family: 'Epilogue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #52d5d6 0%, #4ac5c7 100%);
       min-height: 100vh;
       padding: 20px;
     }
@@ -34,7 +34,7 @@
     }
 
     .admin-header {
-      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+      background: linear-gradient(135deg, #ff8e48 0%, #e67e3e 100%);
       color: white;
       padding: 30px;
       text-align: center;
@@ -58,10 +58,10 @@
     .section-title {
       font-size: 1.5rem;
       font-weight: 600;
-      color: #1f2937;
+      color: #000000;
       margin-bottom: 20px;
       padding-bottom: 10px;
-      border-bottom: 2px solid #e5e7eb;
+      border-bottom: 2px solid #ff8e48;
     }
 
     .article-form {
@@ -79,14 +79,14 @@
     }
 
     .form-group:hover {
-      border-color: #2563eb;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+      border-color: #ff8e48;
+      box-shadow: 0 4px 12px rgba(255, 142, 72, 0.15);
     }
 
     .form-label {
       display: block;
       font-weight: 600;
-      color: #374151;
+      color: #333333;
       margin-bottom: 8px;
       font-size: 0.875rem;
       text-transform: uppercase;
@@ -105,8 +105,8 @@
 
     .form-input:focus {
       outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      border-color: #ff8e48;
+      box-shadow: 0 0 0 3px rgba(255, 142, 72, 0.1);
     }
 
     .form-row {
@@ -121,7 +121,7 @@
 
     .input-help {
       font-size: 0.75rem;
-      color: #6b7280;
+      color: #666666;
       margin-top: 4px;
     }
 
@@ -130,7 +130,7 @@
       left: -30px;
       top: 50%;
       transform: translateY(-50%);
-      background: #2563eb;
+      background: #ff8e48;
       color: white;
       width: 24px;
       height: 24px;
@@ -164,22 +164,25 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+      background: linear-gradient(135deg, #ff8e48 0%, #e67e3e 100%);
       color: white;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 10px 25px rgba(255, 142, 72, 0.35);
     }
 
     .btn-secondary {
-      background: #6b7280;
-      color: white;
+      background: #f3f4f6;
+      color: #333333;
+      border: 2px solid #ff8e48;
     }
 
     .btn-secondary:hover {
-      background: #4b5563;
+      background: #fff5f0;
+      border-color: #e67e3e;
+      transform: translateY(-2px);
     }
 
     .btn-danger {
@@ -192,7 +195,7 @@
     }
 
     .btn-success {
-      background: #10b981;
+      background: #52d5d6;
       color: white;
     }
 
@@ -269,7 +272,7 @@
 
     .current-articles-title {
       font-weight: 600;
-      color: #374151;
+      color: #333333;
       margin-bottom: 15px;
     }
 
@@ -285,7 +288,7 @@
 
     .current-article-number {
       background: #e5e7eb;
-      color: #374151;
+      color: #333333;
       width: 28px;
       height: 28px;
       border-radius: 50%;
@@ -303,7 +306,7 @@
 
     .current-article-title {
       font-weight: 500;
-      color: #1f2937;
+      color: #000000;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -312,7 +315,7 @@
 
     .current-article-url {
       font-size: 0.75rem;
-      color: #6b7280;
+      color: #666666;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
