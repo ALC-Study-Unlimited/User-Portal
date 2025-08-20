@@ -105,9 +105,16 @@
     .featured-image {
       flex: 0 0 400px;
       height: 250px;
-      background-size: cover;
-      background-position: center;
       border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     .featured-text {
@@ -178,8 +185,44 @@
     .article-image {
       width: 100%;
       height: 200px;
-      background-size: cover;
-      background-position: center;
+      overflow: hidden;
+      position: relative;
+      background-color: #f3f4f6;
+    }
+    
+    .article-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    
+    /* 画像読み込みエラー時のスタイル */
+    .article-image img[src=""],
+    .article-image img:not([src]),
+    .featured-image img[src=""],
+    .featured-image img:not([src]) {
+      display: none;
+    }
+    
+    .article-image:has(img[src=""]),
+    .article-image:has(img:not([src])),
+    .featured-image:has(img[src=""]),
+    .featured-image:has(img:not([src])) {
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .article-image:has(img[src=""])::after,
+    .article-image:has(img:not([src]))::after,
+    .featured-image:has(img[src=""])::after,
+    .featured-image:has(img:not([src]))::after {
+      content: "📷";
+      font-size: 48px;
+      opacity: 0.3;
     }
 
     .article-content {
@@ -267,7 +310,9 @@
       
       <div class="featured-article">
         <div class="featured-content">
-          <div class="featured-image" style="background-image: url('https://image-ej.alc.co.jp/images/GKEPd2WZF7WhBSPb1QSCw2.webp');"></div>
+          <div class="featured-image">
+            <img src="https://image-ej.alc.co.jp/images/GKEPd2WZF7WhBSPb1QSCw2.webp" alt="やらかすって英語でどう言う？" loading="lazy">
+          </div>
           <div class="featured-text">
             <span class="featured-badge">NEW</span>
             <h3 class="featured-title">「やらかす」って英語でどう言う？5シーン別に使い分けよう！</h3>
@@ -289,7 +334,9 @@
       <div class="articles-grid">
         <!-- Article 1 -->
         <div class="article-card">
-          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/WSuPNP4Ajgwl6IpxjlAl8K7v.jpeg');"></div>
+          <div class="article-image">
+            <img src="https://image-ej.alc.co.jp/images/WSuPNP4Ajgwl6IpxjlAl8K7v.jpeg" alt="not much ofを使った表現" loading="lazy">
+          </div>
           <div class="article-content">
             <p class="article-date">2017年5月17日</p>
             <h3 class="article-title">not much of（あまり～ではない、大した～ではない）を使った表現15</h3>
@@ -301,7 +348,9 @@
 
         <!-- Article 2 -->
         <div class="article-card">
-          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/Qo28XeeteSjU4bEgf.webp');"></div>
+          <div class="article-image">
+            <img src="https://image-ej.alc.co.jp/images/Qo28XeeteSjU4bEgf.webp" alt="絶好調って英語でどう言う？" loading="lazy">
+          </div>
           <div class="article-content">
             <p class="article-date">学習ヒント</p>
             <h3 class="article-title">「絶好調」って英語でどう言う？5シーン別に使い分けよう！</h3>
@@ -313,7 +362,9 @@
 
         <!-- Article 3 -->
         <div class="article-card">
-          <div class="article-image" style="background-image: url('https://image-ej.alc.co.jp/images/xOYdNoRhM1bD52co6kvP4nQD.jpeg');"></div>
+          <div class="article-image">
+            <img src="https://image-ej.alc.co.jp/images/xOYdNoRhM1bD52co6kvP4nQD.jpeg" alt="省エネ英単語" loading="lazy">
+          </div>
           <div class="article-content">
             <p class="article-date">2019年2月6日</p>
             <h3 class="article-title">「以前と比べて2倍に増えた」って英語2語でどう言う？【省エネ英単語】</h3>
@@ -374,7 +425,9 @@
       if (featuredSection && article) {
         featuredSection.innerHTML = `
           <div class="featured-content">
-            <div class="featured-image" style="background-image: url('${escapeHtml(article.imageUrl)}');"></div>
+            <div class="featured-image">
+              <img src="${escapeHtml(article.imageUrl)}" alt="${escapeHtml(article.title)}" loading="lazy">
+            </div>
             <div class="featured-text">
               <span class="featured-badge">NEW</span>
               <h3 class="featured-title">${escapeHtml(article.title)}</h3>
@@ -395,7 +448,9 @@
       if (articlesGrid && articles.length > 0) {
         articlesGrid.innerHTML = articles.map(article => `
           <div class="article-card">
-            <div class="article-image" style="background-image: url('${escapeHtml(article.imageUrl)}');"></div>
+            <div class="article-image">
+              <img src="${escapeHtml(article.imageUrl)}" alt="${escapeHtml(article.title)}" loading="lazy">
+            </div>
             <div class="article-content">
               <p class="article-date">${escapeHtml(article.date)}</p>
               <h3 class="article-title">${escapeHtml(article.title)}</h3>
