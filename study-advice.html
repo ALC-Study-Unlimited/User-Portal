@@ -282,7 +282,7 @@
       </div>
     </div>
 
-    <!-- Past Articles Section -->
+    <!-- Past Articles Section (最大4記事表示) -->
     <div class="featured-section">
       <h2 class="section-title">過去の学習アドバイス</h2>
       
@@ -371,7 +371,7 @@
       // 最新記事（featured）を取得
       const featuredArticle = articles.find(a => a.isFeatured) || articles[0];
       
-      // 過去記事を取得
+      // 過去記事を取得（最大4つ）
       const pastArticles = articles.filter(a => !a.isFeatured).slice(0, 4);
       
       // 最新記事セクションを更新
