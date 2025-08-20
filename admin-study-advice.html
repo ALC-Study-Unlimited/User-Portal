@@ -349,9 +349,105 @@
       }
     }
   </style>
+  <style>
+    /* 認証モーダルのスタイル */
+    .auth-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .auth-modal.active {
+      display: flex;
+    }
+
+    .auth-box {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .auth-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .auth-input:focus {
+      outline: none;
+      border-color: #ff8e48;
+    }
+
+    .auth-button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #ff8e48 0%, #e67e3e 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .auth-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .auth-error {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 10px;
+      text-align: center;
+      display: none;
+    }
+
+    .auth-error.show {
+      display: block;
+    }
+
+    .admin-container.hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="admin-container">
+  <!-- 認証モーダル -->
+  <div class="auth-modal active" id="authModal">
+    <div class="auth-box">
+      <h2 class="auth-title">🔐 管理者認証</h2>
+      <input type="password" 
+             id="authPassword" 
+             class="auth-input" 
+             placeholder="パスワードを入力してください"
+             autocomplete="current-password">
+      <button onclick="checkAuth()" class="auth-button">ログイン</button>
+      <div class="auth-error" id="authError">パスワードが正しくありません</div>
+    </div>
+  </div>
+  <div class="admin-container hidden" id="adminContainer">
     <div class="admin-header">
       <h1 class="admin-title">🔧 学習アドバイス記事管理</h1>
       <p class="admin-subtitle">表示する記事のURLを入力して更新してください</p>
@@ -634,6 +730,55 @@
     // カスタムイベントを監視（同じタブ内での変更を検知）
     window.addEventListener('articlesUpdated', (e) => {
       displayCurrentArticles();
+    });
+    
+    // 認証機能
+    const ADMIN_PASSWORD = 'alc2024admin'; // パスワード: alc2024admin
+    
+    function checkAuth() {
+      const password = document.getElementById('authPassword').value;
+      const errorDiv = document.getElementById('authError');
+      
+      if (password === ADMIN_PASSWORD) {
+        // 認証成功
+        document.getElementById('authModal').classList.remove('active');
+        document.getElementById('adminContainer').classList.remove('hidden');
+        // パスワードをセッションストレージに保存
+        sessionStorage.setItem('adminAuth', 'true');
+        // フォームを初期化
+        loadCurrentArticles();
+        displayCurrentArticles();
+      } else {
+        // 認証失敗
+        errorDiv.classList.add('show');
+        document.getElementById('authPassword').value = '';
+        setTimeout(() => {
+          errorDiv.classList.remove('show');
+        }, 3000);
+      }
+    }
+    
+    // 初期化とEnterキーでログイン
+    document.addEventListener('DOMContentLoaded', () => {
+      const passwordInput = document.getElementById('authPassword');
+      
+      // Enterキーでログイン
+      passwordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          checkAuth();
+        }
+      });
+      
+      // セッションチェック
+      if (sessionStorage.getItem('adminAuth') === 'true') {
+        document.getElementById('authModal').classList.remove('active');
+        document.getElementById('adminContainer').classList.remove('hidden');
+        loadCurrentArticles();
+        displayCurrentArticles();
+      } else {
+        // フォーカスをパスワード入力欄に設定
+        passwordInput.focus();
+      }
     });
   </script>
 </body>
