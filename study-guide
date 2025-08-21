@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALC Study Unlimited 目的別学習ガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 記憶した配色デザインを適用 --- */
+
+        /* 1. 基本設定と可読性の確保 */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f4f4f4; /* 補助色: 明るいグレー */
+            color: #333333; /* 基本テキスト色: ダークグレー */
+        }
+
+        /* 見出しは黒で統一 */
+        .guide-content h2, .advice-content h2,
+        .guide-content h3, .advice-content h3,
+        .guide-content h4, .advice-content h4 {
+            color: #000000;
+        }
+
+        .guide-content h2, .advice-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            border-bottom: 2px solid #DEE2E6;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .guide-content h3, .advice-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .guide-content h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .advice-content h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 2. プライマリーカラー (行動喚起) : #ff8e48 */
+        .main-header {
+            background-color: #ff8e48; /* プライマリーカラー: オレンジ */
+            color: #FFFFFF;
+        }
+        .tab.active {
+            border-color: #ff8e48; /* プライマリーカラー: オレンジ */
+            color: #ff8e48; /* プライマリーカラー: オレンジ */
+            font-weight: 700;
+        }
+        .tab:hover {
+            color: #e67e3e; /* ホバー色: 濃いオレンジ */
+        }
+        .guide-content h3, .advice-content h3 {
+            border-left: 4px solid #ff8e48; /* プライマリーカラー: オレンジ */
+            padding-left: 0.75rem;
+        }
+        .guide-content strong, .advice-content strong {
+            font-weight: 700;
+            color: #ff8e48; /* プライマリーカラー: オレンジ */
+        }
+        .btn-primary {
+            background-color: #ff8e48; /* プライマリーカラー: オレンジ */
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #e67e3e; /* ホバー色: 濃いオレンジ */
+        }
+
+        /* 3. その他 */
+        .guide-content p, .advice-content p {
+            line-height: 1.75;
+            font-size: 0.875rem;
+        }
+        .guide-content ul {
+            list-style-position: inside;
+            list-style-type: disc;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        .tab-nav-container {
+            border-bottom-color: #DEE2E6;
+        }
+        .tab-content { display: none; }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 4. タイムラインのスタイル (色は視認性のため維持) */
+        .timeline {
+            position: relative;
+            padding-top: 2rem;
+        }
+        .timeline-months {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            padding-left: 8rem;
+        }
+        .timeline-track {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .timeline-tool-name {
+            width: 8rem;
+            flex-shrink: 0;
+            padding-right: 1rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2px;
+            width: 100%;
+            background-color: #e9ecef;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 2px;
+        }
+        .timeline-bar {
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            border-radius: 6px;
+            padding: 0 0.75rem;
+            overflow: hidden;
+        }
+        .timeline-bar-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .timeline-bar-time {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        .bg-tool-seminar { background-color: #63B3ED; color: white; } /* 水色 */
+        .bg-tool-booco { background-color: #68D391; color: white; } /* 黄緑色 */
+        .bg-tool-marathon { background-color: #F6E05E; color: #4A5568; } /* 黄色 */
+        .timeline-bar-single {
+            background-color: #63B3ED; /* 水色 */
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tool-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="main-header text-center mb-8 p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl md:text-4xl font-bold">ALC Study Unlimited 目的別学習ガイド</h1>
+            <p class="mt-2 opacity-90">あなたの目標に最適な学習プランを見つけましょう。</p>
+        </header>
+
+        <div class="mb-8 overflow-x-auto bg-white rounded-lg shadow-sm">
+            <div class="border-b tab-nav-container">
+                <nav class="-mb-px flex space-x-4 px-4" aria-label="Tabs">
+                    <button class="tab active whitespace-nowrap py-4 px-2 border-b-2 font-medium text-sm" data-target="guide-basic">基礎・やり直し</button>
+                    <button class="tab whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-target="guide-advanced">超上級</button>
+                    <button class="tab whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-target="guide-business">ビジネス</button>
+                    <button class="tab whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-target="guide-listening">リスニング</button>
+                    <button class="tab whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-target="guide-speaking">スピーキング</button>
+                    <button class="tab whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-target="guide-toeic">TOEIC®スコアアップ</button>
+                </nav>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
+            <div id="guide-basic" class="tab-content active guide-content">
+                <h2>基礎英語・やり直し英語</h2>
+                <div class="mb-8 pb-8 border-b border-gray-200">
+                    <h3>想定レベルと目標</h3>
+                    <h4>想定レベル</h4>
+                    <ul>
+                        <li>TOEIC未受験 or 300点台以下</li>
+                        <li>英語学習を基礎からやり直したい</li>
+                        <li>英検3 級以下</li>
+                    </ul>
+                    <h4>目的</h4>
+                    <ul>
+                        <li>英語の苦手意識の克服</li>
+                        <li>基礎知識、学習法を身に着ける</li>
+                        <li>英語の音に慣れる</li>
+                    </ul>
+                </div>
+                <h3>おすすめプラン</h3>
+                
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン①：知識インプットをメインにじっくり学ぶ</h4>
+                    <p>まずは語彙や文法の知識をしっかり固めたい、自分のペースで着実に学習を進めたい方におすすめです。</p>
+                    <div class="timeline">
+                        <div class="timeline-months">
+                            <div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="timeline-tool-name">
+                                <img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto">
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-bar-single rounded-full" title="セミナー視聴"></div>
+                            </div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="timeline-tool-name">
+                                <img src="booco.png" alt="booco.png" class="tool-icon mx-auto">
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-bar bg-tool-booco col-span-6">
+                                    <span class="timeline-bar-text">TOEIC®超入門/ビジネス初級</span>
+                                    <span class="timeline-bar-time">⏰ 20-30分/日</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="timeline-tool-name">
+                                <img src="TM.png" alt="TM.png" class="tool-icon mx-auto">
+                            </div>
+                            <div class="timeline-grid">
+                                <div></div><div></div><div></div>
+                                <div class="timeline-bar bg-tool-marathon col-span-3">
+                                    <span class="timeline-bar-text">1〜2スキット</span>
+                                    <span class="timeline-bar-time">⏰ 10分/日</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>プラン②：「話す」練習をメインにバランスよく学ぶ</h4>
+                    <p>とにかく英語を話す機会を増やしたい、インプットとアウトプットを並行して行いたい方におすすめです。</p>
+                    <div class="timeline">
+                         <div class="timeline-months">
+                            <div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="timeline-tool-name">
+                                <img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto">
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-bar-single rounded-full" title="セミナー視聴"></div>
+                            </div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="timeline-tool-name">
+                                <img src="booco.png" alt="booco.png" class="tool-icon mx-auto">
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-bar bg-tool-booco col-span-6">
+                                    <span class="timeline-bar-text">スピーキング Basic</span>
+                                    <span class="timeline-bar-time">⏰ 15-20分/日</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="timeline-tool-name">
+                                <img src="TM.png" alt="TM.png" class="tool-icon mx-auto">
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-bar bg-tool-marathon col-span-6">
+                                    <span class="timeline-bar-text">2〜3スキット</span>
+                                    <span class="timeline-bar-time">⏰ 10-15分/日</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="guide-advanced" class="tab-content guide-content">
+                <h2>超上級を目指す</h2>
+                <div class="mb-8 pb-8 border-b border-gray-200">
+                    <h3>想定レベルと目標</h3>
+                    <h4>想定レベル</h4>
+                    <ul>
+                        <li>英語がそれなりに使える反面、自分で課題を感じている（TOEIC800点以上、TSST6～7以上）</li>
+                    </ul>
+                    <h4>目的</h4>
+                    <ul>
+                        <li>弱点強化</li>
+                        <li>上級レベルのスコアを目指す(スピーキングテストTSST、TOEIC）</li>
+                    </ul>
+                </div>
+                <h3>おすすめプラン</h3>
+                <p>インプットとアウトプットの質を最大限に高めるプランです。学習期間は6ヶ月を想定しています。</p>
+                <div class="timeline">
+                    <div class="timeline-months">
+                        <div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div>
+                    </div>
+                    <div class="timeline-track">
+                        <div class="timeline-tool-name">
+                            <img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto">
+                        </div>
+                        <div class="timeline-grid">
+                             <div class="timeline-bar-single rounded-full" title="セミナー視聴"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-track">
+                        <div class="timeline-tool-name">
+                            <img src="booco.png" alt="booco.png" class="tool-icon mx-auto">
+                        </div>
+                        <div class="timeline-grid">
+                            <div class="timeline-bar bg-tool-booco col-span-6">
+                                <span class="timeline-bar-text">TOEIC® 800点+ / ビジネス上級</span>
+                                <span class="timeline-bar-time">⏰ 20-30分/日</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-track">
+                        <div class="timeline-tool-name">
+                            <img src="TM.png" alt="TM.png" class="tool-icon mx-auto">
+                        </div>
+                        <div class="timeline-grid">
+                            <div class="timeline-bar bg-tool-marathon col-span-6">
+                                <span class="timeline-bar-text">2〜3スキット</span>
+                                <span class="timeline-bar-time">⏰ 10-15分/日</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="guide-business" class="tab-content guide-content">
+                <h2>ビジネス英語</h2>
+                <div class="mb-8 pb-8 border-b border-gray-200">
+                    <h3>想定レベルと目標</h3>
+                    <h4>想定レベル</h4>
+                    <ul>
+                        <li>初級（TOEIC 400点未満、TSST3以下）</li>
+                        <li>中級（TOEIC 400～700点、TSST4,5）</li>
+                        <li>上級（TOEIC 700点以上、TSST6以上）</li>
+                    </ul>
+                    <h4>目的</h4>
+                    <ul>
+                        <li>ビジネスシーンで英語での会話ができる</li>
+                        <li>英語でミーティングやプレゼンテーションができる</li>
+                        <li>英語でEmailが書ける</li>
+                    </ul>
+                </div>
+                <h3>おすすめプラン</h3>
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン①：初級 (TOEIC 400点未満)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">ビジネス英語 初級</span><span class="timeline-bar-time">⏰ 20分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">1〜2スキット</span><span class="timeline-bar-time">⏰ 10分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン②：中級 (TOEIC 400～700点)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">ビジネス英語 中級</span><span class="timeline-bar-time">⏰ 20分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">2〜3スキット</span><span class="timeline-bar-time">⏰ 15分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div>
+                    <h4>プラン③：上級 (TOEIC 700点以上)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">ビジネス英語 上級</span><span class="timeline-bar-time">⏰ 20分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">2〜3スキット</span><span class="timeline-bar-time">⏰ 15分/日</span></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="guide-listening" class="tab-content guide-content">
+                <h2>リスニング強化</h2>
+                <div class="mb-8 pb-8 border-b border-gray-200">
+                    <h3>想定レベルと目標</h3>
+                    <h4>想定レベル</h4>
+                    <ul>
+                        <li>初級（TOEIC400 点未満）</li>
+                        <li>中級（TOEIC600 点未満）</li>
+                        <li>上級（TOEIC600 点以上）</li>
+                    </ul>
+                    <h4>目的</h4>
+                    <ul>
+                        <li>初級：英語で話された短い文の内容を聞き、理解できるようになる</li>
+                        <li>中級：会話や少し長い英文を聞き、英語のまま理解できるようになる</li>
+                        <li>上級：ビジネスシーンで話される長い会話や英文を聞き、英語のまま</li>
+                    </ul>
+                </div>
+                <h3>おすすめプラン</h3>
+                 <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン①：初級 (TOEIC 400点未満)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">リスニング Basic / TOEIC® 超入門</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">1〜2スキット</span><span class="timeline-bar-time">⏰ 10分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン②：中級 (TOEIC 400～600点)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">リスニング Advanced / TOEIC® 600点</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">1〜2スキット</span><span class="timeline-bar-time">⏰ 10分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div>
+                    <h4>プラン③：上級 (TOEIC 600点以上)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">リスニング Advanced / TOEIC® 730点</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">1〜2スキット</span><span class="timeline-bar-time">⏰ 10分/日</span></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="guide-speaking" class="tab-content guide-content">
+                <h2>スピーキング強化</h2>
+                <div class="mb-8 pb-8 border-b border-gray-200">
+                    <h3>想定レベルと目標</h3>
+                    <h4>想定レベル</h4>
+                    <ul>
+                        <li>初級（TSST3以下）</li>
+                        <li>中級（TSST4、5）</li>
+                        <li>上級（TSST6以上）</li>
+                    </ul>
+                    <h4>目的</h4>
+                    <ul>
+                        <li>スピーキングに必要な文法知識・語彙・構文バリエーションを習得する</li>
+                        <li>英語らしい発音・リズムを習得する</li>
+                        <li>英語を英語で理解し、自分の意見を伝える瞬発力を身につける</li>
+                    </ul>
+                </div>
+                <h3>おすすめプラン</h3>
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン①：初級</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">スピーキング Basic</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">1〜2スキット</span><span class="timeline-bar-time">⏰ 10分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン②：中級</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">スピーキング Advanced</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">1〜2スキット</span><span class="timeline-bar-time">⏰ 10分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div>
+                    <h4>プラン③：上級</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-6"><span class="timeline-bar-text">スピーキング Advanced / ビジネス上級</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="TM.png" alt="TM.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-marathon col-span-6"><span class="timeline-bar-text">2〜3スキット</span><span class="timeline-bar-time">⏰ 15分/日</span></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="guide-toeic" class="tab-content guide-content">
+                <h2>TOEIC® L&R テスト スコアアップ</h2>
+                 <div class="mb-8 pb-8 border-b border-gray-200">
+                    <h3>想定レベルと目標</h3>
+                    <h4>想定レベル</h4>
+                    <ul>
+                        <li>TOEIC 470点突破</li>
+                        <li>TOEIC 600点突破</li>
+                        <li>TOEIC 730点突破</li>
+                    </ul>
+                    <h4>目的</h4>
+                    <ul>
+                        <li>目標スコアの達成</li>
+                    </ul>
+                </div>
+                <h3>おすすめプラン</h3>
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン①：470点突破 (対象: 350～450点)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-3"><span class="timeline-bar-text">TOEIC® 超入門</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div><div class="timeline-bar bg-tool-booco col-span-3"><span class="timeline-bar-text">TOEIC® 500点</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div class="mb-12 pb-12 border-b border-gray-200">
+                    <h4>プラン②：600点突破 (対象: 450～550点)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-3"><span class="timeline-bar-text">TOEIC® 500点</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div><div class="timeline-bar bg-tool-booco col-span-3"><span class="timeline-bar-text">TOEIC® 600点</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                    </div>
+                </div>
+                <div>
+                    <h4>プラン③：730点突破 (対象: 550～700点)</h4>
+                    <div class="timeline">
+                        <div class="timeline-months"><div>1ヶ月目</div><div>2ヶ月目</div><div>3ヶ月目</div><div>4ヶ月目</div><div>5ヶ月目</div><div>6ヶ月目</div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="Seminar.png" alt="Seminar.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar-single rounded-full" title="セミナー視聴"></div></div></div>
+                        <div class="timeline-track"><div class="timeline-tool-name"><img src="booco.png" alt="booco.png" class="tool-icon mx-auto"></div><div class="timeline-grid"><div class="timeline-bar bg-tool-booco col-span-3"><span class="timeline-bar-text">TOEIC® 730点</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div><div class="timeline-bar bg-tool-booco col-span-3"><span class="timeline-bar-text">TOEIC® 800点+</span><span class="timeline-bar-time">⏰ 20-30分/日</span></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 p-6 md:p-8 rounded-lg bg-white shadow-md advice-content">
+            <h2>継続のための学習アドバイス</h2>
+            <div class="flex flex-col gap-8">
+                <div class="flex-1 bg-gray-50 p-6 rounded-lg flex items-start space-x-4">
+                    <div class="text-4xl" style="color: #ff8e48;">🎯</div>
+                    <div>
+                        <h4 class="font-bold text-lg">①目標や計画は大まかに決めよう</h4>
+                        <p>細かいスケジュールを作っても、途中で守れずに挫折しやすいものです。まずは「スピーキング力を伸ばす」といった大まかな方向性だけを手帳に書いたり、見える場所に貼ったりしておきましょう。学習中にそのメモを見返すことで、自然と目標を思い出せます。</p>
+                    </div>
+                </div>
+                <div class="flex-1 bg-gray-50 p-6 rounded-lg flex items-start space-x-4">
+                    <div class="text-4xl" style="color: #ff8e48;">⏱️</div>
+                    <div>
+                        <h4 class="font-bold text-lg">②スキマ時間を使って少しずつ進めよう</h4>
+                        <p>通勤中や休憩時間の5～10分を活用して、短い学習を毎日の習慣にしましょう。長い時間をまとめて取るのが難しいときは、学習を小さく分けて一日に何度も行うのがコツです。短時間なら気軽に取り組めるので、毎日続けやすくなります。</p>
+                    </div>
+                </div>
+                <div class="flex-1 bg-gray-50 p-6 rounded-lg flex items-start space-x-4">
+                    <div class="text-4xl" style="color: #ff8e48;">🔄</div>
+                    <div>
+                        <h4 class="font-bold text-lg">③気持ちが乗らないときは計画を調整しよう</h4>
+                        <p>どんなに頑張っても学習に気が向かない「スランプ」は誰にでもあります。そんなときは、学習量を減らしたり、簡単な復習だけにしたりして、無理なく続けられるように工夫しましょう。あらかじめ学習に締め切り時間を決めておくと、気持ちを切り替えやすくなります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 p-6 md:p-8 rounded-lg bg-white shadow-md advice-content">
+            <h2>TOEIC® L&Rテスト 詳細学習プラン</h2>
+            <div class="bg-gray-50 p-6 rounded-lg flex items-start space-x-4">
+                <div class="text-4xl" style="color: #ff8e48;">📄</div>
+                <div>
+                    <h4 class="font-bold text-lg">さらに詳しい学習プランはこちら</h4>
+                    <p>TOEIC® L&Rテストのスコアアップを目指す方向けに、目標スコア別のさらに詳細な学習プラン（超入門、500点、600点、700点、800点以上）をPDFでご用意しました。以下のボタンからご覧いただけます。</p>
+                    <a href="toeic_learning_models_20250729063556.pdf" target="_blank" class="btn-primary">
+                        詳細学習プランを見る (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(item => item.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    tab.classList.add('active');
+                    const target = document.getElementById(tab.dataset.target);
+                    if (target) {
+                        target.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
