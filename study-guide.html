@@ -98,6 +98,34 @@
             background-color: #e67e3e; /* ホバー色: 濃いオレンジ */
         }
 
+        /* 戻るボタン */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff8e48;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 6px;
+            background-color: #ffffff;
+            border: 1px solid #ff8e48;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            font-family: Epilogue, sans-serif;
+        }
+
+        .back-button:hover {
+            background-color: #ff8e48;
+            color: #ffffff;
+            transform: translateX(-3px);
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
         /* 4. セカンダリーカラーとその他の調整 */
         .bg-gray-100 {
             background-color: #f4f4f4 !important;
@@ -206,9 +234,9 @@
 <body class="bg-gray-100">
 
     <div class="container mx-auto p-4 md:p-8">
-        <!-- トップページに戻るボタン -->
-        <a href="index.html" class="inline-flex items-center gap-2 mb-6 px-5 py-2.5 bg-white text-orange-500 border-2 border-orange-500 rounded-lg hover:bg-orange-500 hover:text-white transition-all duration-300 font-medium">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <!-- 戻るボタン -->
+        <a href="index.html" class="back-button">
+            <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
             </svg>
             トップページに戻る
