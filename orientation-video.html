@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-  <script type="text/javascript">WebFont.load({  google: {    families: ["Epilogue:regular"]  }});</script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Epilogue:regular,800"]  }});</script>
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
@@ -19,10 +19,12 @@
   <style>
     /* ページ全体の背景とレイアウト */
     body {
-      background-color: #f5f5f7;
+      background-color: #FFFFFF;
+      color: #333333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      font-family: Epilogue, sans-serif;
     }
 
     /* ヘッダーのスタイル */
@@ -36,14 +38,15 @@
 
     .video-header h1 {
       font-size: 2.5em;
-      color: #1a1a1a;
+      color: #52d5d6;
       margin-bottom: 10px;
-      font-weight: 600;
+      font-weight: 800;
+      font-family: Epilogue, sans-serif;
     }
 
     .video-header p {
       font-size: 1.1em;
-      color: #666;
+      color: #333333;
       max-width: 800px;
       margin: 0 auto;
       line-height: 1.6;
@@ -91,20 +94,20 @@
 
     .video-info h2 {
       font-size: 1.8em;
-      color: #1a1a1a;
+      color: #000000;
       margin-bottom: 20px;
       font-weight: 600;
     }
 
     .video-description {
-      color: #666;
+      color: #333333;
       line-height: 1.8;
       margin-bottom: 30px;
     }
 
     /* チャプター（目次）セクション */
     .chapters {
-      background-color: #f8f8fa;
+      background-color: #f4f4f4;
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 30px;
@@ -112,7 +115,7 @@
 
     .chapters h3 {
       font-size: 1.3em;
-      color: #1a1a1a;
+      color: #000000;
       margin-bottom: 15px;
       font-weight: 600;
     }
@@ -135,25 +138,25 @@
     }
 
     .chapter-list li:hover {
-      background-color: #e8e8ed;
+      background-color: #ffab7a;
       transform: translateX(5px);
     }
 
     .chapter-time {
-      color: #0066cc;
+      color: #ff8e48;
       font-weight: 500;
       margin-right: 15px;
       min-width: 60px;
     }
 
     .chapter-title {
-      color: #333;
+      color: #333333;
       flex: 1;
     }
 
     /* ダウンロードセクション */
     .download-section {
-      background-color: #f0f5ff;
+      background-color: #f4f4f4;
       border-radius: 8px;
       padding: 25px;
       margin-bottom: 30px;
@@ -171,20 +174,20 @@
 
     .download-info h3 {
       font-size: 1.2em;
-      color: #1a1a1a;
+      color: #000000;
       margin-bottom: 8px;
       font-weight: 600;
     }
 
     .download-info p {
-      color: #666;
+      color: #333333;
       font-size: 0.95em;
       line-height: 1.5;
       margin: 0;
     }
 
     .download-button {
-      background-color: #0066cc;
+      background-color: #ff8e48;
       color: white;
       padding: 12px 30px;
       border-radius: 6px;
@@ -197,7 +200,7 @@
     }
 
     .download-button:hover {
-      background-color: #0052a3;
+      background-color: #e67e3e;
     }
 
     .download-button svg {
@@ -210,18 +213,20 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #0066cc;
+      color: #ff8e48;
       text-decoration: none;
       font-weight: 500;
       padding: 10px 20px;
       border-radius: 6px;
-      background-color: #f0f5ff;
+      background-color: #ffffff;
+      border: 1px solid #ff8e48;
       transition: all 0.3s ease;
       margin-bottom: 20px;
     }
 
     .back-button:hover {
-      background-color: #e0ebff;
+      background-color: #ff8e48;
+      color: #ffffff;
       transform: translateX(-3px);
     }
 
@@ -233,21 +238,21 @@
     /* メモ・注意事項セクション */
     .notes-section {
       background-color: #fff9e6;
-      border-left: 4px solid #ffb800;
+      border-left: 4px solid #ff8e48;
       padding: 20px;
       border-radius: 6px;
       margin-bottom: 30px;
     }
 
     .notes-section h3 {
-      color: #1a1a1a;
+      color: #000000;
       font-size: 1.1em;
       margin-bottom: 10px;
       font-weight: 600;
     }
 
     .notes-section ul {
-      color: #666;
+      color: #333333;
       line-height: 1.8;
       margin: 0;
       padding-left: 20px;
