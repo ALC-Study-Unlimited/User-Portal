@@ -38,7 +38,7 @@
     /* UI改善のためのカスタムスタイル */
     .video-header-section {
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 3rem 0;
+      padding: 2rem 0 1.5rem 0; /* 上下のパディングを削減 */
     }
     
     .breadcrumb {
@@ -163,7 +163,7 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="section video-header-section">
+  <header class="video-header-section"> <!-- sectionクラスを削除してデフォルトパディングを回避 -->
     <div class="container">
       <!-- Breadcrumb -->
       <nav class="breadcrumb">
@@ -173,8 +173,8 @@
       </nav>
       
       <div class="header is-align-center">
-        <h1 class="heading_h1 margin-bottom_small">オリエンテーション動画</h1>
-        <p class="subheading max-width_large margin-horizontal_auto">
+        <h1 class="heading_h1" style="margin-bottom: 0.75rem;">オリエンテーション動画</h1>
+        <p class="subheading max-width_large margin-horizontal_auto" style="margin-bottom: 0;">
           ALC Study Unlimitedを最大限活用するための完全ガイド<br>
           初めての方も、すでにご利用中の方も、サービスの全機能をマスターできます
         </p>
@@ -184,7 +184,7 @@
 
   <!-- Main Content -->
   <main>
-    <section class="section">
+    <section class="section" style="padding-top: 2rem;"> <!-- 上部パディングを削減 -->
       <div class="container">
         <!-- Two Column Layout -->
         <div class="w-layout-grid grid_2-col gap-large">
