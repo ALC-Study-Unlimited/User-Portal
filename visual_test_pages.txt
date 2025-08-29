@@ -1,4 +1,0 @@
-index.html
-orientation-video.html
-user-guide.html
-study-guide.html
